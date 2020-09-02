@@ -1,0 +1,58 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title The English Times
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    :javascript
+      WebFontConfig = {
+        google: { families: [ 'Unica+One::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+  %body
+    %header
+      %header__in
+        %header__in--text
+          %a.header-text{:href => "#"}The English Times
+        - if user_signed_in?
+          .user_nav.grid-6
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+        - else
+          .grid-6
+            = link_to "ログイン", new_user_session_path, class: 'post'
+            = link_to "新規登録", new_user_registration_path, class: 'post'
+    %navbar
+      %ul.navbar--contents 
+        %li.navbar--contents__btn
+          %a{:href => "#"}HOME
+        %li.navbar--contents__btn
+          = link_to "単語", tweets_path
+        %li.navbar--contents__btn 
+          %a{:href => "#"}空所補充
+        %li.navbar--contents__btn 
+          %a{:href => "#"}長文
+        %li.navbar--contents__btn 
+          %a{:href => "#"}英会話
+        %li.navbar--contents__btn
+          %a{:href => "#"}記事いろいろ
+    %contents
+      .contents--in
+        .contents--homepage
+        %img.back-image{alt: "マーライオン", src: "https://cdn.pixabay.com/photo/2017/09/05/16/19/singapore-river-2718300_1280.jpg"}
+        .contents--homepagesecond
+        %img.back-image{alt: "シンガポール", src: "https://cdn.pixabay.com/photo/2014/01/30/18/26/singapore-river-255116_1280.jpg"}
+    = yield
+    %contentsfooter
+    %footer
+      %footer--text
+        %a{:href => "#"}© 2020  Masaki  ALL RIGHTS RESERVED
