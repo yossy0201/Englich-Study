@@ -1,0 +1,190 @@
+@import "compass";
+
+/*
+ * "ほのか明朝" licensed under the IPA Font License Agreement v1.0
+ * http://fontfree.me/966（配布元のURL）
+ * http://ipafont.ipa.go.jp/（IPAフォントのURL）
+ * http://ipafont.ipa.go.jp/ipa_font_license_v1.html（IPAフォントライセンスv1.0のURL）
+ */
+@font-face {
+    font-family: 'ほのか明朝';
+    src: url('font_1_honokamin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Unica+One);
+
+$accent: blue;
+$black: yellow;
+$dark: white;
+$darkGray: pink;
+$gray: blue;
+$lightGray: green;
+$white: white;
+
+@mixin boxBase($margin: 30px auto, $padding: 10px) {
+  margin: $margin;
+  padding: $padding;
+}
+@mixin basePadding($padding: 10px) {
+  padding: $padding;
+}
+@mixin baseMargin($margin: 10px auto) {
+  margin: $margin;
+}
+
+body,html {
+  height: 100%;
+  // background-color: $white;
+}
+
+body {
+  background: $white;
+}
+
+h1,h2,h3,h4,h5,h6,body {
+line-height: 1.57;
+  letter-spacing: 0.15em;
+  font-size: 16px;
+  color: $dark;
+  font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $dark;
+  @extend .transition;
+  &:hover {
+    color: $accent;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.serif {
+  font-family: 'ほのか明朝',serif;
+}
+
+.ultra {
+  font-size: 2em !important;
+}
+
+::selection {
+  background: $gray;
+}
+
+.transition {
+  @include transition-property(all);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(linear);
+}
+
+
+.title {
+  font-weight: bold;
+}
+
+.title--big {
+  font-size: 1.5em;
+  font-weight: bold;
+  i {
+    font-style: italic;
+    font-size: 1.8em;
+  }
+}
+
+  header {
+    background: black;
+    padding: 12px 0 24px 11px;
+    height: 100px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    &--in {
+      width: 1000px;
+      &__text{
+        color: white;
+        position: absolute;
+        top: 20%;
+      }
+    }
+    .header-text {
+      font-size: 30px;
+    }
+    .post {
+      padding-right: 15px;
+    }
+  }
+  .navbar {
+    &--contents {
+      text-align: center;
+      height: 50px;
+      background:gray;
+      font-size: 20px;
+      padding: 12px 0 24px 11px;
+      &__btn {
+        display: inline;
+        // float: left;
+        margin-left: 28px;
+        color: $white;
+      }
+    }
+  }
+  // .contents--homepage {
+    // height: 100%;
+    // background: pink;
+    // .back-image {
+    //   width: 100%;
+    // }
+    // .back-image-contents {
+    //   width: 30px;
+    // }
+  // }
+  .contents--in {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 660px;
+  }
+  .container {
+    text-align: center;
+    background-color: gray;
+    height: 300px;
+    .nickname {
+      width: 170px;
+    }
+  }
+  .actions {
+    margin-top: 20px;
+    .logIn-btn {
+      width: 155px;
+      background: cornflowerblue;
+      color: white;
+      border-radius: 30px;
+      height: 35px;
+    }
+    .signUp-btn {
+      width: 155px;
+      background: cornflowerblue;
+      color: white;
+      border-radius: 30px;
+      height: 35px;
+    }
+  }
+
+  footer {
+    height: 80px;
+    color: $white;
+    text-align: center;
+    background: black;
+    padding: 12px 0 24px 11px;
+    bottom: 0; /*下に固定*/
+    padding-top: 35px;
+  }
+
